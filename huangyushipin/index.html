@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄鱼视频-热门短视频与影视资讯分享平台</title>
+    <meta name="description" content="黄鱼视频是一个专注于热门短视频、影视剧集推荐与娱乐资讯的分享平台，提供最新片单、剧情解析与观影指南，让您快速发现值得一看的精彩内容。">
+    <meta name="keywords" content="黄鱼视频,短视频,影视推荐,热门剧集,电影影评,娱乐资讯,片单推荐">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        /* 容器 */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* 顶部导航 */
+        .site-header {
+            background-color: #1a1d29;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .logo a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffc107;
+            letter-spacing: 1px;
+        }
+        .logo .icon {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background: #ffc107;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            color: #1a1d29;
+            font-size: 1.3rem;
+            font-weight: 900;
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 28px;
+        }
+        .main-nav a {
+            color: #e9ecef;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: #ffc107;
+            border-bottom-color: #ffc107;
+        }
+        .header-search {
+            display: flex;
+            align-items: center;
+            background: #2b3040;
+            border-radius: 30px;
+            padding: 4px 6px 4px 16px;
+        }
+        .header-search input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            width: 180px;
+            font-size: 0.9rem;
+        }
+        .header-search button {
+            background: #ffc107;
+            border: none;
+            border-radius: 30px;
+            padding: 6px 16px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #1a1d29;
+            transition: background 0.2s;
+        }
+        .header-search button:hover {
+            background: #ffca2c;
+        }
+        /* 移动端菜单按钮 */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        /* 首屏横幅 */
+        .hero {
+            background: linear-gradient(135deg, #1a1d29, #2a3040 60%, #3a4055);
+            padding: 56px 0 48px;
+            color: #fff;
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .hero-text {
+            flex: 1 1 450px;
+        }
+        .hero-text h1 {
+            font-size: 2.6rem;
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+        .hero-text h1 span {
+            color: #ffc107;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #cbd5e0;
+            margin-bottom: 24px;
+            max-width: 600px;
+        }
+        .hero-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .hero-badges .badge {
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 40px;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .hero-cover {
+            flex: 0 0 320px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #adb5bd;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .hero-cover::after {
+            content: "🎬";
+            font-size: 5rem;
+            opacity: 0.3;
+            position: absolute;
+        }
+        /* 栏目通用 */
+        .section {
+            padding: 48px 0;
+        }
+        .section-title {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 12px;
+        }
+        .section-title h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #1a1d29;
+            letter-spacing: 0.5px;
+        }
+        .section-title h2 .accent {
+            color: #ffc107;
+            margin-right: 6px;
+        }
+        .section-title .more-link {
+            font-size: 0.95rem;
+            color: #6c757d;
+            transition: color 0.2s;
+        }
+        .section-title .more-link:hover {
+            color: #1a1d29;
+        }
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .video-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+        .card-thumbnail {
+            background: #dee2e6;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #adb5bd;
+            position: relative;
+        }
+        .card-thumbnail .duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+        .card-body {
+            padding: 16px;
+        }
+        .card-body h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        .card-meta .views::before {
+            content: "👁️ ";
+        }
+        .card-meta .date::before {
+            content: "📅 ";
+        }
+        /* 热门榜单 */
+        .rank-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .rank-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: background 0.2s;
+        }
+        .rank-item:hover {
+            background: #f8f9fa;
+        }
+        .rank-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ced4da;
+            width: 40px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .rank-num.top1 {
+            color: #ffc107;
+        }
+        .rank-num.top2 {
+            color: #adb5bd;
+        }
+        .rank-num.top3 {
+            color: #cd7f32;
+        }
+        .rank-content {
+            flex: 1;
+        }
+        .rank-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+        .rank-content p {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        .rank-tag {
+            background: #e9ecef;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #495057;
+        }
+        /* 分类浏览 */
+        .category-tiles {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+        }
+        .category-tile {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px 16px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .category-tile:hover {
+            background: #ffc107;
+            transform: scale(1.02);
+        }
+        .category-tile .emoji {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .category-tile .cat-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        /* 资讯列表 */
+        .news-list {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        .news-item {
+            display: flex;
+            gap: 20px;
+            padding: 18px 0;
+            border-bottom: 1px solid #f1f3f5;
+            align-items: flex-start;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        .news-date {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 8px 12px;
+            text-align: center;
+            min-width: 70px;
+            font-size: 0.9rem;
+            color: #495057;
+        }
+        .news-date .day {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: block;
+            color: #1a1d29;
+        }
+        .news-content h3 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .news-content p {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+        /* FAQ */
+        .faq-section {
+            background: #f1f3f5;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 20px;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+        .faq-item h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a1d29;
+        }
+        .faq-item p {
+            color: #495057;
+            font-size: 0.95rem;
+        }
+        /* 页脚 */
+        .site-footer {
+            background: #1a1d29;
+            color: #adb5bd;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        .footer-about h3 {
+            color: #ffc107;
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+        }
+        .footer-about p {
+            font-size: 0.9rem;
+            max-width: 400px;
+        }
+        .footer-links h4 {
+            color: #e9ecef;
+            margin-bottom: 14px;
+            font-size: 1rem;
+        }
+        .footer-links ul li {
+            margin-bottom: 8px;
+        }
+        .footer-links ul a {
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .footer-links ul a:hover {
+            color: #ffc107;
+        }
+        .footer-bottom {
+            border-top: 1px solid #2b3040;
+            padding-top: 18px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        /* 响应式 */
+        @media (max-width: 992px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .category-tiles {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-badges {
+                justify-content: center;
+            }
+            .hero-cover {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+        @media (max-width: 768px) {
+            .header-inner {
+                height: auto;
+                flex-wrap: wrap;
+                padding: 12px 0;
+            }
+            .main-nav {
+                display: none;
+                width: 100%;
+                order: 3;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 0;
+                padding: 10px 0;
+            }
+            .main-nav a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #2b3040;
+            }
+            .menu-toggle {
+                display: block;
+                order: 2;
+            }
+            .header-search {
+                order: 2;
+                flex: 1;
+                margin-left: 12px;
+            }
+            .header-search input {
+                width: 100%;
+            }
+            .nav-open .main-nav {
+                display: block;
+            }
+            .rank-list {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .section-title {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+        @media (max-width: 480px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .category-tiles {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .container {
+                padding: 0 14px;
+            }
+            .faq-section {
+                padding: 24px;
+            }
+            .news-item {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo">
+            <a href="#"><span class="icon">黄</span>黄鱼视频</a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="菜单">☰</button>
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">热门推荐</a></li>
+                <li><a href="#">影视资讯</a></li>
+                <li><a href="#">搞笑短剧</a></li>
+                <li><a href="#">生活记录</a></li>
+                <li><a href="#">榜单排行</a></li>
+            </ul>
+        </nav>
+        <div class="header-search">
+            <input type="text" placeholder="搜索你感兴趣的视频...">
+            <button type="button">搜索</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- 首屏 Hero -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>发现精彩视频<br>从 <span>黄鱼视频</span> 开始</h1>
+                <p>每天精选热门短视频、影视剧集与娱乐资讯，汇聚全网有趣、有料、有深度的内容。无论您喜欢搞笑、影视、生活还是知识，这里都能找到让您停留的好内容。</p>
+                <div class="hero-badges">
+                    <span class="badge">🔥 每日热榜</span>
+                    <span class="badge">🎬 新片速递</span>
+                    <span class="badge">⭐ 编辑精选</span>
+                    <span class="badge">📈 飙升趋势</span>
+                </div>
+            </div>
+            <div class="hero-cover">
+                <!-- 装饰图占位 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门视频推荐 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2><span class="accent">🔥</span>本周热门视频</h2>
+                <a href="#" class="more-link">查看全部 →</a>
+            </div>
+            <div class="card-grid">
+                <article class="video-card">
+                    <div class="card-thumbnail">
+                        🎬
+                        <span class="duration">12:30</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>年度高分悬疑剧《暗潮》前3集深度解析</h3>
+                        <div class="card-meta">
+                            <span class="views">128.5万</span>
+                            <span class="date">2025-05-18</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="video-card">
+                    <div class="card-thumbnail">
+                        😂
+                        <span class="duration">05:12</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>搞笑短剧：老板的奇葩会议日常，笑到肚子疼</h3>
+                        <div class="card-meta">
+                            <span class="views">89.2万</span>
+                            <span class="date">2025-05-17</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="video-card">
+                    <div class="card-thumbnail">
+                        🎥
+                        <span class="duration">18:45</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>4K修复版《经典港片》幕后花絮首次公开</h3>
+                        <div class="card-meta">
+                            <span class="views">56.7万</span>
+                            <span class="date">2025-05-16</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="video-card">
+                    <div class="card-thumbnail">
+                        📺
+                        <span class="duration">08:20</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>国产动画新番《山海异闻录》第1集抢先看</h3>
+                        <div class="card-meta">
+                            <span class="views">42.1万</span>
+                            <span class="date">2025-05-15</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 分类浏览 -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-title">
+                <h2><span class="accent">📂</span>视频分类浏览</h2>
+                <a href="#" class="more-link">全部分类 →</a>
+            </div>
+            <div class="category-tiles">
+                <div class="category-tile">
+                    <span class="emoji">🎭</span>
+                    <span class="cat-name">影视剧集</span>
+                </div>
+                <div class="category-tile">
+                    <span class="emoji">😂</span>
+                    <span class="cat-name">搞笑短剧</span>
+                </div>
+                <div class="category-tile">
+                    <span class="emoji">🎮</span>
+                    <span class="cat-name">游戏实况</span>
+                </div>
+                <div class="category-tile">
+                    <span class="emoji">🍳</span>
+                    <span class="cat-name">美食制作</span>
+                </div>
+                <div class="category-tile">
+                    <span class="emoji">✈️</span>
+                    <span class="cat-name">旅行记录</span>
+                </div>
+                <div class="category-tile">
+                    <span class="emoji">📚</span>
+                    <span class="cat-name">知识科普</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门榜单 -->
+    <section class="section" style="background:#eef0f3; padding: 48px 0;">
+        <div class="container">
+            <div class="section-title">
+                <h2><span class="accent">🏆</span>黄鱼热播榜</h2>
+                <a href="#" class="more-link">完整榜单 →</a>
+            </div>
+            <div class="rank-list">
+                <div class="rank-item">
+                    <span class="rank-num top1">1</span>
+                    <div class="rank-content">
+                        <h3>《漫长的季节》- 全员演技在线</h3>
+                        <p>近期口碑最佳的国产剧，豆瓣评分持续走高</p>
+                    </div>
+                    <span class="rank-tag">热度 98</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num top2">2</span>
+                    <div class="rank-content">
+                        <h3>《快乐再出发》- 综艺黑马</h3>
+                        <p>真实幽默的旅行真人秀，嘉宾化学反应满分</p>
+                    </div>
+                    <span class="rank-tag">热度 95</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num top3">3</span>
+                    <div class="rank-content">
+                        <h3>《奥本海默》- 传记电影巅峰</h3>
+                        <p>诺兰执导的震撼之作，IMAX体验绝佳</p>
+                    </div>
+                    <span class="rank-tag">热度 92</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num">4</span>
+                    <div class="rank-content">
+                        <h3>《种地吧》- 治愈系慢综艺</h3>
+                        <p>十个少年真实种地，让人重新思考生活</p>
+                    </div>
+                    <span class="rank-tag">热度 88</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num">5</span>
+                    <div class="rank-content">
+                        <h3>《宇宙探索编辑部》- 荒诞浪漫</h3>
+                        <p>国产科幻喜剧的另类之作，充满想象力</p>
+                    </div>
+                    <span class="rank-tag">热度 85</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num">6</span>
+                    <div class="rank-content">
+                        <h3>《狂飙》- 现象级扫黑剧</h3>
+                        <p>张颂文、张译强强对决，剧情紧凑过瘾</p>
+                    </div>
+                    <span class="rank-tag">热度 83</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 影视资讯 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2><span class="accent">📰</span>最新影视资讯</h2>
+                <a href="#" class="more-link">更多资讯 →</a>
+            </div>
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-date">
+                        <span class="day">18</span>
+                        5月
+                    </div>
+                    <div class="news-content">
+                        <h3>暑期档各大影片陆续定档，多部备受期待的作品将于6月上映</h3>
+                        <p>随着暑期临近，多部国产大片和动画电影宣布定档，包括备受关注的科幻续集和现实主义题材作品，观众的选择更加丰富。</p>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">
+                        <span class="day">17</span>
+                        5月
+                    </div>
+                    <div class="news-content">
+                        <h3>某热播剧宣布将拍摄电影版，原班人马回归引发讨论</h3>
+                        <p>在剧集完结一年后，片方正式宣布启动电影版制作，导演和主演均确认回归，影迷们纷纷表示期待故事在大银幕上的延续。</p>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">
+                        <span class="day">16</span>
+                        5月
+                    </div>
+                    <div class="news-content">
+                        <h3>多个国际电影节公布入围名单，华语影片表现亮眼</h3>
+                        <p>最新一届国际A类电影节入围名单揭晓，多部华语影片入围主竞赛单元，涵盖文艺、悬疑、动画等多种类型，展现华语电影的多元创作力。</p>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">
+                        <span class="day">15</span>
+                        5月
+                    </div>
+                    <div class="news-content">
+                        <h3>流媒体平台加大自制内容投入，传统影视公司加速转型</h3>
+                        <p>多家头部流媒体平台公布新一轮内容制作计划，加大对原创剧集和电影的投入，传统影视公司也在积极寻求合作与转型，行业格局正在重塑。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 FAQ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2><span class="accent">💬</span>关于黄鱼视频的常见问题</h2>
+            </div>
+            <div class="faq-section">
+                <div class="faq-item">
+                    <h3>黄鱼视频是什么平台？</h3>
+                    <p>黄鱼视频是一个集短视频推荐、影视资讯分享、热门内容导航于一体的内容发现平台。我们聚合全网优质视频内容，帮助用户快速找到值得观看的作品，同时提供深度的影评解析和行业资讯。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>需要下载客户端才能使用吗？</h3>
+                    <p>不需要。黄鱼视频基于网页端设计，您可以直接通过浏览器访问，无需下载任何软件或应用。页面响应式布局在手机和电脑上都能获得良好的浏览体验，方便快捷。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>平台上可以观看完整视频吗？</h3>
+                    <p>黄鱼视频本身不存储视频文件，而是作为内容导航和推荐平台，提供视频的简介、评分、看点分析以及跳转至原始来源的指引。我们致力于帮助您发现内容，并引导至合法授权渠道进行观看。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>如何获取最新的影视推荐？</h3>
+                    <p>您可以通过网站首页的"本周热门"、"热播榜单"和"最新资讯"等栏目获取编辑精选的推荐内容。我们每天都会更新榜单和资讯，确保您掌握最新的影视动态和口碑佳作。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>网站收录的内容是否均为正版？</h3>
+                    <p>我们非常注重版权问题，推荐的视频和影视内容均指向正规视频平台、官方频道或已获授权的发布渠道。我们坚决反对盗版内容，致力于为用户提供健康的内容生态。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <h3>关于黄鱼视频</h3>
+                <p>黄鱼视频致力于成为值得信赖的内容发现平台，通过专业编辑的筛选和用户反馈，为您呈现有品质、有温度、有价值的视频推荐与影视资讯。我们相信好的内容值得被更多人看见。</p>
+            </div>
+            <div class="footer-links">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="#">热门推荐</a></li>
+                    <li><a href="#">影视资讯</a></li>
+                    <li><a href="#">榜单排行</a></li>
+                    <li><a href="#">分类浏览</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>帮助与支持</h4>
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">版权声明</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">意见反馈</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 黄鱼视频 huangyushipin.com 版权所有 · 尊重原创 · 分享快乐</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // 移动端菜单切换
+    document.getElementById('menuToggle').addEventListener('click', function () {
+        document.querySelector('.site-header').classList.toggle('nav-open');
+    });
+</script>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+  </html>
