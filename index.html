@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gtv八大综合台直播 - 在线观看频道节目与直播入口指南</title>
+    <meta name="description" content="gtv八大综合台直播入口与节目资讯，提供频道介绍、热门综艺、偶像剧时段、收视指南及常见问题解答，帮助您快速了解观看方式与节目亮点。">
+    <meta name="keywords" content="gtv八大综合台直播,八大综合台,八大综合台节目表,gtv直播,台湾电视台,综合台在线看">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f7fa;
+            color: #1c2733;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .site-header {
+            background: linear-gradient(145deg, #0d1b3e 0%, #1d2d50 100%);
+            color: #fff;
+            padding: 18px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: #f7c948;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #0d1b3e;
+            font-size: 20px;
+        }
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .logo-text span {
+            color: #f7c948;
+            font-weight: 400;
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 24px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .main-nav a {
+            padding: 6px 4px;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .main-nav a:hover,
+        .main-nav a.active {
+            border-bottom-color: #f7c948;
+            color: #f7c948;
+        }
+
+        /* Hero 首屏 */
+        .hero {
+            background: linear-gradient(135deg, #eef3fb 0%, #dfe8f3 100%);
+            padding: 48px 0 40px;
+            border-bottom: 1px solid #dbe2ec;
+        }
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .hero-copy {
+            flex: 1 1 360px;
+        }
+        .hero-copy h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #0d1b3e;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .hero-copy .highlight {
+            color: #b8860b;
+        }
+        .hero-copy p {
+            font-size: 17px;
+            color: #2c3a57;
+            margin-bottom: 24px;
+        }
+        .hero-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            border-radius: 30px;
+            padding: 6px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1e3a6f;
+        }
+        .hero-card {
+            flex: 0 1 380px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: 0 12px 30px rgba(13, 27, 62, 0.12);
+            border: 1px solid #e2e8f0;
+        }
+        .hero-card h2 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #0d1b3e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .live-dot {
+            width: 12px;
+            height: 12px;
+            background: #e53e3e;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .program-list {
+            margin: 14px 0 18px;
+        }
+        .program-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #d7dde8;
+            font-size: 15px;
+        }
+        .program-item .time {
+            color: #b8860b;
+            font-weight: 600;
+        }
+        .live-btn {
+            display: block;
+            background: #0d1b3e;
+            color: #fff;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        .live-btn:hover {
+            background: #1d2d50;
+            transform: translateY(-2px);
+        }
+        .note {
+            font-size: 12px;
+            color: #6b7a93;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* section 通用 */
+        .section {
+            padding: 48px 0;
+        }
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0d1b3e;
+            margin-bottom: 8px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-sub {
+            color: #5a6a80;
+            margin-bottom: 28px;
+            font-size: 16px;
+        }
+        .section-divider {
+            width: 60px;
+            height: 4px;
+            background: #f7c948;
+            border-radius: 4px;
+            margin: 0 0 18px 0;
+        }
+
+        /* 频道介绍 */
+        .intro-section {
+            background: #fff;
+        }
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .intro-text h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: #1d2d50;
+        }
+        .intro-text p {
+            margin-bottom: 12px;
+            color: #33415c;
+        }
+        .intro-facts {
+            background: #f0f4fa;
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .intro-facts li {
+            padding: 10px 0;
+            border-bottom: 1px solid #d9e1ec;
+            display: flex;
+            gap: 12px;
+            align-items: baseline;
+            font-size: 15px;
+        }
+        .intro-facts li:last-child {
+            border-bottom: none;
+        }
+        .intro-facts strong {
+            color: #0d1b3e;
+        }
+
+        /* 节目分类卡片 */
+        .category-section {
+            background: #f9fafc;
+        }
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .cat-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid #e2e8f0;
+            transition: 0.25s;
+        }
+        .cat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 24px rgba(13, 27, 62, 0.08);
+        }
+        .cat-card .cat-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        .cat-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #0d1b3e;
+        }
+        .cat-card p {
+            color: #526077;
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
+        .cat-link {
+            color: #b8860b;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* 热门节目列表 */
+        .hot-section {
+            background: #fff;
+        }
+        .show-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 22px;
+        }
+        .show-item {
+            display: flex;
+            gap: 18px;
+            background: #f8fafd;
+            border-radius: 14px;
+            padding: 18px;
+            border: 1px solid #e8edf4;
+            align-items: center;
+        }
+        .show-thumb {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #d4dff0, #aab9d4);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #1d2d50;
+            flex-shrink: 0;
+        }
+        .show-info h4 {
+            font-size: 17px;
+            margin-bottom: 4px;
+            color: #0d1b3e;
+        }
+        .show-info .meta {
+            font-size: 13px;
+            color: #6b7a93;
+            margin-bottom: 6px;
+        }
+        .show-info .desc {
+            font-size: 14px;
+            color: #33415c;
+        }
+
+        /* 直播观看指南 */
+        .guide-section {
+            background: #0d1b3e;
+            color: #dfe8f3;
+        }
+        .guide-section .section-title {
+            color: #fff;
+        }
+        .guide-section .section-divider {
+            background: #f7c948;
+        }
+        .guide-section .section-sub {
+            color: #a5b4cc;
+        }
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .guide-step {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .step-num {
+            font-size: 28px;
+            font-weight: 800;
+            color: #f7c948;
+            margin-bottom: 10px;
+        }
+        .guide-step h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .guide-step p {
+            font-size: 14px;
+            color: #c2cee4;
+        }
+
+        /* FAQ */
+        .faq-section {
+            background: #f9fafc;
+        }
+        .faq-list {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 14px;
+            border: 1px solid #e2e8f0;
+        }
+        .faq-item h3 {
+            font-size: 17px;
+            color: #0d1b3e;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .faq-item .q-mark {
+            background: #0d1b3e;
+            color: #fff;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .faq-item p {
+            color: #4a5568;
+            font-size: 15px;
+            padding-left: 34px;
+        }
+
+        /* 注意事项 */
+        .notice-section {
+            background: #fff;
+            border-top: 1px solid #eef2f7;
+        }
+        .notice-box {
+            background: #f8fafd;
+            border-left: 5px solid #b8860b;
+            padding: 24px 28px;
+            border-radius: 0 14px 14px 0;
+            max-width: 900px;
+        }
+        .notice-box h3 {
+            color: #0d1b3e;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+        .notice-box ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+        .notice-box li {
+            margin-bottom: 8px;
+            color: #33415c;
+            font-size: 15px;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #0d1b3e;
+            color: #a5b4cc;
+            padding: 32px 0 24px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #c2cee4;
+        }
+        .footer-links a:hover {
+            color: #f7c948;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .main-nav ul {
+                flex-wrap: wrap;
+                gap: 12px;
+                font-size: 15px;
+            }
+            .hero-copy h1 {
+                font-size: 28px;
+            }
+            .hero-card {
+                flex: 1 1 100%;
+            }
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .section-title {
+                font-size: 24px;
+            }
+            .section {
+                padding: 36px 0;
+            }
+            .show-list {
+                grid-template-columns: 1fr;
+            }
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .hero-copy h1 {
+                font-size: 24px;
+            }
+            .badge {
+                font-size: 12px;
+                padding: 4px 10px;
+            }
+            .faq-item p {
+                padding-left: 0;
+                margin-top: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo-area">
+            <div class="logo-icon">G</div>
+            <div class="logo-text">gtv<span>八大综合台</span></div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#intro" class="active">频道简介</a></li>
+                <li><a href="#programs">节目分类</a></li>
+                <li><a href="#hot">热门节目</a></li>
+                <li><a href="#guide">观看指南</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero 首屏 -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-copy">
+                <h1>gtv八大综合台直播<br><span class="highlight">精彩节目实时放送</span></h1>
+                <p>掌握最新直播动态、节目时段与热门内容。这里汇集八大综合台的频道亮点、综艺资讯和收视指南，让您快速了解如何观看喜爱节目。</p>
+                <div class="hero-badges">
+                    <span class="badge">📺 综合频道</span>
+                    <span class="badge">🎭 综艺 · 戏剧</span>
+                    <span class="badge">🔔 每日更新</span>
+                </div>
+            </div>
+            <div class="hero-card">
+                <h2><span class="live-dot"></span> 正在播出</h2>
+                <div class="program-list">
+                    <div class="program-item">
+                        <span>综艺大热门</span>
+                        <span class="time">20:00 - 21:30</span>
+                    </div>
+                    <div class="program-item">
+                        <span>偶像剧重映</span>
+                        <span class="time">21:30 - 23:00</span>
+                    </div>
+                    <div class="program-item">
+                        <span>深夜新闻</span>
+                        <span class="time">23:00 - 23:30</span>
+                    </div>
+                </div>
+                <button class="live-btn" onclick="alert('直播入口请参考页面指南。')">▶ 进入直播频道</button>
+                <p class="note">实际播出以官方信号为准 · 仅供参考</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 频道介绍 -->
+    <section class="section intro-section" id="intro">
+        <div class="container">
+            <span class="section-title">频道介绍</span>
+            <div class="section-divider"></div>
+            <div class="intro-grid">
+                <div class="intro-text">
+                    <h3>关于八大综合台</h3>
+                    <p>八大综合台是台湾地区知名的卫星电视频道，属于八大电视旗下。频道以综合娱乐内容为核心，节目类型涵盖热门综艺、偶像剧、生活资讯、音乐节目及节庆特别企划等。全天候滚动播出，满足各年龄层观众的观看需求。</p>
+                    <p>多年来，八大综合台制作并引进了多档高人气节目，包括访谈、游戏竞技和实境秀等，在华人地区拥有稳定的收视群体。频道注重内容的多元性与娱乐性，并持续推出新形态节目。</p>
+                </div>
+                <div class="intro-facts">
+                    <h3 style="color:#0d1b3e; margin-bottom:14px;">📋 频道速览</h3>
+                    <ul>
+                        <li><strong>所属公司：</strong> 八大电视股份有限公司</li>
+                        <li><strong>播出语言：</strong> 国语为主</li>
+                        <li><strong>节目类型：</strong> 综艺、戏剧、资讯混合</li>
+                        <li><strong>收视特点：</strong> 晚间黄金时段为主力</li>
+                        <li><strong>观看方式：</strong> 有线电视 / IPTV / 在线平台</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 节目分类 -->
+    <section class="section category-section" id="programs">
+        <div class="container">
+            <span class="section-title">节目分类</span>
+            <div class="section-divider"></div>
+            <p class="section-sub">了解八大综合台的主要节目板块，快速锁定您感兴趣的内容类型。</p>
+            <div class="cat-grid">
+                <div class="cat-card">
+                    <div class="cat-icon">🎤</div>
+                    <h3>热门综艺</h3>
+                    <p>包含游戏竞技、才艺选秀、明星访谈等多样综艺节目，气氛轻松娱乐性强。</p>
+                    <span class="cat-link">晚间黄金档 →</span>
+                </div>
+                <div class="cat-card">
+                    <div class="cat-icon">🎬</div>
+                    <h3>偶像戏剧</h3>
+                    <p>播出精选华语偶像剧及热门剧集，涵盖爱情、家庭、职场等题材。</p>
+                    <span class="cat-link">午间/晚间时段 →</span>
+                </div>
+                <div class="cat-card">
+                    <div class="cat-icon">🎵</div>
+                    <h3>音乐节目</h3>
+                    <p>音乐排行、演唱会特别节目以及歌手专访，满足音乐爱好者需求。</p>
+                    <span class="cat-link">周末特别企划 →</span>
+                </div>
+                <div class="cat-card">
+                    <div class="cat-icon">📰</div>
+                    <h3>生活资讯</h3>
+                    <p>时尚、美食、旅游、健康等生活资讯类内容，提供实用消费参考。</p>
+                    <span class="cat-link">日间时段 →</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门节目推荐 -->
+    <section class="section hot-section" id="hot">
+        <div class="container">
+            <span class="section-title">热门节目推荐</span>
+            <div class="section-divider"></div>
+            <p class="section-sub">近期观众关注度较高的节目，供您安排观看时间。</p>
+            <div class="show-list">
+                <div class="show-item">
+                    <div class="show-thumb">🎭</div>
+                    <div class="show-info">
+                        <h4>综艺大热门</h4>
+                        <div class="meta">每周一至五 20:00</div>
+                        <div class="desc">轻松访谈结合热门话题，来宾分享生活趣事。</div>
+                    </div>
+                </div>
+                <div class="show-item">
+                    <div class="show-thumb">💍</div>
+                    <div class="show-info">
+                        <h4>爱的故事</h4>
+                        <div class="meta">每周六 21:00</div>
+                        <div class="desc">都会爱情单元剧，每集独立剧情，情感真挚。</div>
+                    </div>
+                </div>
+                <div class="show-item">
+                    <div class="show-thumb">🎶</div>
+                    <div class="show-info">
+                        <h4>金曲之夜</h4>
+                        <div class="meta">每周日 19:00</div>
+                        <div class="desc">回顾经典金曲，邀请实力唱将现场演绎。</div>
+                    </div>
+                </div>
+                <div class="show-item">
+                    <div class="show-thumb">✈️</div>
+                    <div class="show-info">
+                        <h4>旅行日志</h4>
+                        <div class="meta">每周三 22:00</div>
+                        <div class="desc">探索岛内外特色景点，提供深度旅游攻略。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 观看指南 -->
+    <section class="section guide-section" id="guide">
+        <div class="container">
+            <span class="section-title">直播观看指南</span>
+            <div class="section-divider"></div>
+            <p class="section-sub">如何通过不同方式收看gtv八大综合台直播？以下是一些常见途径。</p>
+            <div class="guide-grid">
+                <div class="guide-step">
+                    <div class="step-num">01</div>
+                    <h3>有线电视</h3>
+                    <p>台湾地区部分有线电视系统业者提供八大综合台频道，可在机顶盒中搜索频道列表查找。</p>
+                </div>
+                <div class="guide-step">
+                    <div class="step-num">02</div>
+                    <h3>IPTV / MOD</h3>
+                    <p>部分IPTV平台或中华电信MOD将八大综合台纳入套餐，可通过电视或App观看。</p>
+                </div>
+                <div class="guide-step">
+                    <div class="step-num">03</div>
+                    <h3>官方网络平台</h3>
+                    <p>八大电视官方或授权的影音平台可能提供部分节目的网络直播或回看服务。</p>
+                </div>
+                <div class="guide-step">
+                    <div class="step-num">04</div>
+                    <h3>注意事项</h3>
+                    <p>直播信号受地区及版权限制，具体可观看范围请以平台实际提供为准。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq-section" id="faq">
+        <div class="container">
+            <span class="section-title">常见问题</span>
+            <div class="section-divider"></div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3><span class="q-mark">?</span> gtv八大综合台每天几点更新节目表？</h3>
+                    <p>频道通常以一周为单位发布节目表，并可能因特别企划进行调整。建议在官网或电子节目表查看最新安排。</p>
+                </div>
+                <div class="faq-item">
+                    <h3><span class="q-mark">?</span> 八大综合台和八大戏剧台有什么区别？</h3>
+                    <p>综合台的节目类型更广泛，包含综艺、资讯和戏剧；戏剧台则主要播出连续剧和偶像剧，定位略有不同。</p>
+                </div>
+                <div class="faq-item">
+                    <h3><span class="q-mark">?</span> 在海外可以收看八大综合台直播吗？</h3>
+                    <p>部分官方授权平台或网络电视服务可能提供海外观看选项，但需注意节目版权的地域限制。</p>
+                </div>
+                <div class="faq-item">
+                    <h3><span class="q-mark">?</span> 如何查询准确的节目播出时间？</h3>
+                    <p>可参考频道官网公布的节目表，或在电视机的电子节目指南中查看当天及未来几天的播出安排。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 注意事项 -->
+    <section class="section notice-section">
+        <div class="container">
+            <div class="notice-box">
+                <h3>📢 观看提示</h3>
+                <ul>
+                    <li>直播内容及播出时间可能因临时调整而变动，请以实际播出为准。</li>
+                    <li>网络观看时请选择官方或正规授权渠道，保障画质与观看体验。</li>
+                    <li>部分节目可能设有版权限制，特定地区无法观看属正常现象。</li>
+                    <li>本页面仅提供频道与节目介绍，不直接提供未经授权的直播信号。</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-links">
+            <a href="#intro">频道介绍</a>
+            <a href="#programs">节目分类</a>
+            <a href="#guide">观看指南</a>
+            <a href="#faq">常见问题</a>
+        </div>
+        <p>© 2025 gtv八大综合台资讯站 · 本页面仅为信息整理与交流参考</p>
+        <p style="margin-top:6px; font-size:12px;">所有节目内容版权归原电视台所有</p>
+    </div>
+</footer>
+
+</body>
+</html>
